@@ -13,6 +13,9 @@ export default defineNuxtConfig({
     preset: 'node-server'
   },
   
+  // ВОТ ЭТУ СТРОКУ НУЖНО ВЕРНУТЬ
+  css: ['~/assets/main-CG_6Mkbz.css'],
+  
   app: {
     head: {
       title: "UMSOFT – Разработка мобильных приложений и веб-сервисов",
