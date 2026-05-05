@@ -14,7 +14,6 @@
     "@nuxt/test-utils": "^3.19.2",
     "@nuxtjs/robots": "^5.5.1",
     "@nuxtjs/seo": "^3.1.0",
-    "@umsoft/nuxt-forms-layers": "^0.0.4",
     "eslint": "^9.33.0",
     "nuxt": "^4.1.2",
     "vue": "^3.5.18",

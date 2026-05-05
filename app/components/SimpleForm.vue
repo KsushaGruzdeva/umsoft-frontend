@@ -68,6 +68,10 @@ import { reactive, ref, watch, computed, nextTick } from 'vue'
 const props = defineProps(['isOpen'])
 const emit = defineEmits(['close'])
 
+// Используем runtime config для API URL
+const config = useRuntimeConfig()
+const API_BASE = config.public.apiBase
+
 const form = reactive({
   fio: '',
   email: '',
@@ -124,7 +128,7 @@ const handlePhoneFocus = () => {
 }
 
 // Следим за полем телефона и применяем маску
-watch(() => form.phone, (newVal, oldVal) => {
+watch(() => form.phone, (newVal) => {
   // Если пользователь удаляет всё содержимое
   if (newVal === '' || newVal === '+7') {
     form.phone = '+7'
@@ -163,6 +167,7 @@ const submitForm = async () => {
   errorMessage.value = ''
   successMessage.value = ''
 
+  // Валидация
   if (!form.fio.trim()) {
     errorMessage.value = 'Пожалуйста, укажите ФИО'
     return
@@ -192,14 +197,15 @@ const submitForm = async () => {
   }
 
   try {
-    const API_BASE = import.meta.env.VITE_API_URL || '/api'
-
+    // Используем API_BASE из конфига
     const response = await fetch(`${API_BASE}/requests`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(data)
     })
-    
+
     const result = await response.json()
 
     if (response.ok && result.success) {
@@ -212,6 +218,7 @@ const submitForm = async () => {
       errorMessage.value = result.message || 'Произошла ошибка. Попробуйте позже.'
     }
   } catch (error) {
+    console.error('Submit error:', error)
     errorMessage.value = 'Не удалось подключиться к серверу'
   } finally {
     loading.value = false
@@ -376,6 +383,7 @@ const submitForm = async () => {
   text-align: center;
   font-size: 14px;
   font-family: 'Montserrat', sans-serif;
+  border-radius: 4px;
 }
 
 .simple-error {
@@ -386,6 +394,7 @@ const submitForm = async () => {
   text-align: center;
   font-size: 14px;
   font-family: 'Montserrat', sans-serif;
+  border-radius: 4px;
 }
 
 /* Ссылка на согласие */
