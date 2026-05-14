@@ -211,11 +211,11 @@ const submitForm = async () => {
     if (response.ok && result.success) {
       successMessage.value = result.message || 'Заявка успешно отправлена!'
       
-      setTimeout(() => {
-        closeModal()
-      }, 2000)
+      // setTimeout(() => {
+      //   closeModal()
+      // }, 2000)
     } else {
-      errorMessage.value = result.message || 'Произошла ошибка. Попробуйте позже.'
+      errorMessage.value = 'Произошла ошибка. Попробуйте позже.'
     }
   } catch (error) {
     console.error('Submit error:', error)
