@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import SimpleForm from '~/components/SimpleForm.vue';
+import TheForm from './TheForm.vue';
 
 const { showHeaderMenu, setVisibleHeaderMenu } = useHeaderMenu();
 const showSimpleForm = ref(false);
@@ -45,6 +45,5 @@ const closeForm = () => {
         </div>
     </header>
     
-    <!-- Новая форма -->
-    <SimpleForm :isOpen="showSimpleForm" @close="closeForm" />
+    <TheForm :isOpen="showSimpleForm" @close="closeForm" />
 </template>

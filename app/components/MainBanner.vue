@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import SimpleForm from '~/components/SimpleForm.vue';
+import TheForm from './TheForm.vue';
+
 
 const showSimpleForm = ref(false);
 
@@ -40,6 +41,5 @@ const closeForm = () => {
         </div>
     </section>
     
-    <!-- Новая форма -->
-    <SimpleForm :isOpen="showSimpleForm" @close="closeForm" />
+    <TheForm :isOpen="showSimpleForm" @close="closeForm" />
 </template>

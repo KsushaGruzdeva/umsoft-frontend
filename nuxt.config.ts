@@ -13,7 +13,6 @@ export default defineNuxtConfig({
     preset: 'node-server'
   },
   
-  // ВОТ ЭТУ СТРОКУ НУЖНО ВЕРНУТЬ
   css: ['~/assets/main-CG_6Mkbz.css'],
   
   app: {
